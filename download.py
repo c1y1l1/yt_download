@@ -34,7 +34,7 @@ def dow():
     filters = re.compile(u'[^0-9a-zA-Z\u0083\u008a\u008c\u008e\u009a\u009c\u009e\u009f\u00c0-\u00d6\u00d8-\u00f6\u00f8-\u00ff\u0100-\u017f\u4e00-\u9fff\u3040-\u309f\u30a0-\u30ff\u3130-\u318f\uff00-\uffef]+', re.UNICODE)
     name = filters.sub('-', yt.title)
     # print(yt.streams.filter(progressive=True))
-    # yt.streams.filter(mime_type='audio/mp4').first().download(filename=name+'.mp4', output_path=target_path)
+    # yt.streams.filter().get_audio_only().download(filename=name+'.mp3', output_path=target_path)
     yt.streams.filter().get_audio_only().download(filename=name+'.mp4', output_path=target_path)
     video = AudioFileClip(os.path.join(target_path, name+'.mp4'))
     video.write_audiofile(os.path.join(target_path, name+'.mp3'))
